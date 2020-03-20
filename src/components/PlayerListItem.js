@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './PlayerListItem.css';
+import PlayerPosition from './PlayerPosition'
 
 class PlayerListItem extends Component {
   render() {
+    const {current,listLen} = this.props
     return (
       <li className={styles.playerListItem}>
         <div className={styles.playerInfos}>
@@ -15,6 +17,12 @@ class PlayerListItem extends Component {
             <small>
               {this.props.team} · {this.props.position}
             </small>
+          </div>
+          <div>
+              <span>change position：</span>
+              <PlayerPosition  position={this.props.position}
+                               changeFn={(position)=>{this.props.changePosition(this.props.id,position)}}
+              />
           </div>
         </div>
         <div className={styles.playerActions}>
@@ -31,7 +39,14 @@ class PlayerListItem extends Component {
           </button>
           <button
             className={`btn btn-default ${styles.btnAction}`}
-            onClick={() => this.props.deletePlayer(this.props.id)}
+            onClick={() => {
+              if(window.confirm("确定要删除该球员吗？")){
+                  this.props.deletePlayer(this.props.id)
+                  if (Math.ceil((listLen-1) / 5) < current && current >1) {
+                      this.props.deleteCall(current - 1)
+                  }
+              }
+            }}
           >
             <i className="fa fa-trash" />
           </button>
@@ -48,6 +63,7 @@ PlayerListItem.propTypes = {
   position: PropTypes.string.isRequired,
   starred: PropTypes.bool,
   starPlayer: PropTypes.func.isRequired,
+  changePosition: PropTypes.func.isRequired,
 };
 
 export default PlayerListItem;

@@ -17,7 +17,6 @@
 :local(.playerActions) {
   flex: 0 0 90px;
 }
-
 :local(.btnAction),
 :local(.btnAction):active,
 :local(.btnAction):focus,
@@ -28,4 +27,9 @@
 
 button:focus {
   outline: 0 !important;
+}
+
+li{
+  /*list-style: none;*/
+  margin: 10px;
 }

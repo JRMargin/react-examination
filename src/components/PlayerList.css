@@ -2,3 +2,25 @@
   padding-left: 0;
   margin-bottom: 0;
 }
+
+.ant-pagination{
+  display: flex;
+  justify-content: center;
+}
+.ant-pagination li{
+  list-style: none;
+  border: solid 1px #337ab7;
+  padding:5px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.ant-pagination-item{
+  padding: 5px 10px !important;
+}
+.ant-pagination-item-active{
+  background-color: #b8dbf9;
+}
+ol{
+  margin: 0;
+  padding: 0;
+}

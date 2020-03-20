@@ -4,3 +4,10 @@
   border-left: 0;
   border-right: 0;
 }
+.content{
+  display: flex;
+  min-width: 260px;
+}
+.submitBtn{
+  width: 140px;
+}
